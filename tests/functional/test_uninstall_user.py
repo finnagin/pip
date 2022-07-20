@@ -65,7 +65,7 @@ class Tests_UninstallUserSite:
         to_install = data.packages.joinpath("FSPkg")
         result1 = script.pip("install", "--user", "-e", to_install)
         egg_link = script.user_site / "FSPkg.egg-link"
-        result1.did_create(egg_link)
+        result1.did_create("NOT PATH")
 
         # uninstall
         result2 = script.pip("uninstall", "-y", "FSPkg")
@@ -80,4 +80,3 @@ class Tests_UninstallUserSite:
                 script.user_site / "easy-install.pth",
             ],
         )
-        assert False
