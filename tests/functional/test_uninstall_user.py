@@ -80,3 +80,4 @@ class Tests_UninstallUserSite:
                 script.user_site / "easy-install.pth",
             ],
         )
+        assert False
