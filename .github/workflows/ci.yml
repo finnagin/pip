@@ -113,7 +113,7 @@ jobs:
           )
           $acl.AddAccessRule($rule)
           Set-Acl "R:\Temp" $acl
-      
+
       - run: pip install nox 'virtualenv<20'
         env:
           TEMP: "R:\\Temp"
