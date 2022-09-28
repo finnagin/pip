@@ -117,7 +117,7 @@ jobs:
 
       - run: pip install nox 'virtualenv<20'
         env:
-          TEMP: "R:\\Temp"
+          TEMP: "C:\\Temp"
 
       # Main check
       - name: Run unit tests
