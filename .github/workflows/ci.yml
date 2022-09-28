@@ -104,16 +104,16 @@ jobs:
       # - name: Create a RAMDisk
       #   run: ./tools/ci/New-RAMDisk.ps1 -Drive R -Size 1GB
       #
-      # - name: Setup RAMDisk permissions
-      #   run: |
-      #     mkdir R:\Temp
-      #     $acl = Get-Acl "R:\Temp"
-      #     $rule = New-Object System.Security.AccessControl.FileSystemAccessRule(
-      #         "Everyone", "FullControl", "ContainerInherit,ObjectInherit", "None", "Allow"
-      #     )
-      #     $acl.AddAccessRule($rule)
-      #     Set-Acl "R:\Temp" $acl
-      #
+      - name: Setup RAMDisk permissions
+        run: |
+          mkdir R:\Temp
+          $acl = Get-Acl "R:\Temp"
+          $rule = New-Object System.Security.AccessControl.FileSystemAccessRule(
+              "Everyone", "FullControl", "ContainerInherit,ObjectInherit", "None", "Allow"
+          )
+          $acl.AddAccessRule($rule)
+          Set-Acl "R:\Temp" $acl
+      
       - run: pip install nox 'virtualenv<20'
         env:
           TEMP: "R:\\Temp"
