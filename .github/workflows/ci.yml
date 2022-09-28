@@ -103,7 +103,7 @@ jobs:
       # for our tests.
       # - name: Create a RAMDisk
       #   run: ./tools/ci/New-RAMDisk.ps1 -Drive R -Size 1GB
-      # 2nd run
+      # 3rd run
       - name: Setup RAMDisk permissions
         run: |
           ls
