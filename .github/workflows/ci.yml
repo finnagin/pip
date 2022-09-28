@@ -106,18 +106,18 @@ jobs:
       #
       - name: Setup RAMDisk permissions
         run: |
-          echo $PWD
-          mkdir C:\Temp
-          $acl = Get-Acl "C:\Temp"
+          ls
+          mkdir D:\Temp
+          $acl = Get-Acl "D:\Temp"
           $rule = New-Object System.Security.AccessControl.FileSystemAccessRule(
               "Everyone", "FullControl", "ContainerInherit,ObjectInherit", "None", "Allow"
           )
           $acl.AddAccessRule($rule)
-          Set-Acl "C:\Temp" $acl
+          Set-Acl "D:\Temp" $acl
 
       - run: pip install nox 'virtualenv<20'
         env:
-          TEMP: "C:\\Temp"
+          TEMP: "D:\\Temp"
 
       # Main check
       - name: Run unit tests
@@ -127,7 +127,7 @@ jobs:
           -m unit
           --verbose --numprocesses auto --showlocals
         env:
-          TEMP: "C:\\Temp"
+          TEMP: "D:\\Temp"
 
       - name: Run integration tests (group 1)
         if: matrix.group == 1
@@ -136,7 +136,7 @@ jobs:
           -m integration -k "not test_install"
           --verbose --numprocesses auto --showlocals
         env:
-          TEMP: "C:\\Temp"
+          TEMP: "D:\\Temp"
 
       - name: Run integration tests (group 2)
         if: matrix.group == 2
@@ -145,4 +145,4 @@ jobs:
           -m integration -k "test_install"
           --verbose --numprocesses auto --showlocals
         env:
-          TEMP: "C:\\Temp"
+          TEMP: "D:\\Temp"
