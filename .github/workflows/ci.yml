@@ -74,7 +74,6 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.x"
-          architecture: x64
       - name: Set up git credentials
         run: |
           git config --global user.email "pypa-dev@googlegroups.com"
