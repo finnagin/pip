@@ -169,7 +169,7 @@ jobs:
 
   tests-windows:
     name: tests / ${{ matrix.python }} / ${{ matrix.os }} / ${{ matrix.group.number }}
-    runs-on: ${{ matrix.os }}-latest
+    runs-on: ${{ matrix.os }}
 
     needs: [determine-changes]
     if: >-
@@ -179,7 +179,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        os: [Windows]
+        os: [Windows-latest, Windows-11-arm]
         python:
           - "3.9"
           # Commented out, since Windows tests are expensively slow,
