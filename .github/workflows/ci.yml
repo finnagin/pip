@@ -82,8 +82,8 @@ jobs:
         name: Install rustup
         id: install-rustup
         run: |
-            Invoke-WebRequest https://static.rust-lang.org/rustup/dist/aarch64-pc-windows-msvc/rustup-init.exe -OutFile .\rustup-init.exe
-            .\rustup-init.exe -y
+            Invoke-WebRequest https://static.rust-lang.org/rustup/dist/aarch64-pc-windows-msvc/rustup-init.exe -OutFile $GITHUB_WORKSPACE\rustup-init.exe
+            $GITHUB_WORKSPACE\rustup-init.exe -y
             Add-Content $env:GITHUB_PATH "$env:USERPROFILE\.cargo\bin"
 
       - run: pip install nox
@@ -207,8 +207,8 @@ jobs:
         name: Install rustup
         id: install-rustup
         run: |
-            Invoke-WebRequest https://static.rust-lang.org/rustup/dist/aarch64-pc-windows-msvc/rustup-init.exe -OutFile .\rustup-init.exe
-            .\rustup-init.exe -y
+            Invoke-WebRequest https://static.rust-lang.org/rustup/dist/aarch64-pc-windows-msvc/rustup-init.exe -OutFile $GITHUB_WORKSPACE\rustup-init.exe
+            $GITHUB_WORKSPACE\rustup-init.exe -y
             Add-Content $env:GITHUB_PATH "$env:USERPROFILE\.cargo\bin"
 
       - uses: actions/checkout@v4
