@@ -191,6 +191,9 @@ jobs:
         group:
           - { number: 1, pytest-filter: "not test_install" }
           - { number: 2, pytest-filter: "test_install" }
+        exclude:
+          - os: windows-11-arm
+            python: "3.9"
 
     steps:
       # The D: drive is significantly faster than the system C: drive.
