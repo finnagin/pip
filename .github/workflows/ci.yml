@@ -78,6 +78,13 @@ jobs:
         run: |
           git config --global user.email "pypa-dev@googlegroups.com"
           git config --global user.name "pip"
+      - if: ${{ matrix.os == 'windows-11-arm' }}
+        name: Install rustup
+        id: install-rustup
+        run: |
+            Invoke-WebRequest https://static.rust-lang.org/rustup/dist/aarch64-pc-windows-msvc/rustup-init.exe -OutFile .\rustup-init.exe
+            .\rustup-init.exe -y
+            Add-Content $env:GITHUB_PATH "$env:USERPROFILE\.cargo\bin"
 
       - run: pip install nox
       - run: nox -s prepare-release -- 99.9
